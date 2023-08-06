@@ -1,0 +1,225 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import './view.css';
+
+
+
+const Output = () => {
+  const [viewOption, setViewOption] = useState('monthly');
+  const [dataOption, setDataOption] = useState('circle');
+  const [circle, setCircle] = useState('');
+  const [division, setDivision] = useState('');
+  const [subdivision, setSubdivision] = useState('');
+  const [fetchedData, setFetchedData] = useState([]);
+
+
+  const handleViewOptionChange = (e) => {
+    setViewOption(e.target.value);
+  };
+
+  const handleDataOptionChange = (e) => {
+    setDataOption(e.target.value);
+  };
+
+  const handleCircleChange = (e) => {
+    setCircle(e.target.value);
+    setFetchedData([]);
+  };
+
+  const handleDivisionChange = (e) => {
+    setDivision(e.target.value);
+    setFetchedData([]);
+  };
+
+  const handleSubdivisionChange = (e) => {
+    setSubdivision(e.target.value);
+    setFetchedData([]);
+  };
+
+  const handleGetData = () => {
+    // Prepare the API endpoint URL based on the selected options
+    let apiUrl = '/view';
+
+
+    // Build the query parameters based on the selected search options
+    const queryParams = {
+      viewOption,
+      dataOption,
+      circle: dataOption === 'circle' ? circle : '',
+      division: dataOption === 'division' ? division : '',
+      subdivision: dataOption === 'subdivision' ? subdivision : '',
+    };
+
+    // Convert the query parameters to a URL-encoded string
+    const queryString = new URLSearchParams(queryParams).toString();
+
+    // Append the query string to the API endpoint URL
+    apiUrl += `?${queryString}`;
+
+    // Make the API call using axios
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        // Handle the response data here
+        console.log(response.data); // This will log the data returned from the API
+        // Update the state with the fetched data if necessary
+        setFetchedData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error); // Log the error if something went wrong
+        // Optionally, you can handle the error or notify the user
+      });
+  };
+
+
+  return (
+    <div>
+      <h1 className='makesure'>View Data</h1>
+      <div>
+        <div className='monthly'>
+        <label >
+          <input
+            type="radio"
+            value="monthly"
+            checked={viewOption === 'monthly'}
+            onChange={handleViewOptionChange}
+          />
+          View Monthly Data
+        </label>
+        </div>
+        <div className='monthly'>
+        <label>
+          <input
+            type="radio"
+            value="yearly"
+            checked={viewOption === 'yearly'}
+            onChange={handleViewOptionChange}
+          />
+          View Yearly Data
+        </label>
+        </div>
+      </div>
+
+      <div>
+      <div className='choosing'>  <label>
+          <input
+            type="radio"
+            value="circle"
+            checked={dataOption === 'circle'}
+            onChange={handleDataOptionChange}
+          />
+          Choose By Circle
+        </label></div>
+       <div className='choosing'> <label>
+          <input
+            type="radio"
+            value="division"
+            checked={dataOption === 'division'}
+            onChange={handleDataOptionChange}
+          />
+          Choose By Division
+        </label></div>
+      <div className='choosing'>  <label>
+          <input
+            type="radio"
+            value="subdivision"
+            checked={dataOption === 'subdivision'}
+            onChange={handleDataOptionChange}
+          />
+          Choose By Subdivision
+        </label></div>
+      </div>
+
+      {dataOption === 'circle' && (
+        <div className='dsdc'>
+          <label>
+            Circle:
+            <input type="text" value={circle} onChange={handleCircleChange} />
+          </label>
+        </div>
+      )}
+
+      {dataOption === 'division' && (
+        <div className='dsdc'>
+          <label>
+            Division:
+            <input type="text" value={division} onChange={handleDivisionChange} />
+          </label>
+        </div>
+      )}
+
+      {dataOption === 'subdivision' && (
+        <div className='dsdc'>
+          <label>
+            Subdivision:
+            <input type="text" value={subdivision} onChange={handleSubdivisionChange} />
+          </label>
+        </div>
+      )}
+
+      <button onClick={handleGetData} className='getMore'>Get Data</button>
+
+            {/* Display the fetched data here */}
+            {fetchedData.length > 0 && (
+        <div>
+          <h2 className='tabledata'>Fetched Data</h2>
+          <div className='table-container'>
+          {/* <table className='data-table'> */}
+           <table className='data-table'>
+  <thead>
+    {dataOption === 'circle' && (
+      <tr>
+        <th>Circle</th>
+        <th>Division</th>
+        <th>Subdivision</th>
+        <th>{viewOption === 'monthly' ? 'Month' : 'Year'}</th>
+      </tr>
+    )}
+    {dataOption === 'division' && (
+      <tr>
+        <th>Division</th>
+        <th>Subdivision</th>
+        <th>{viewOption === 'monthly' ? 'Month' : 'Year'}</th>
+      </tr>
+    )}
+    {dataOption === 'subdivision' && (
+      <tr>
+        <th>Subdivision</th>
+        <th>{viewOption === 'monthly' ? 'Month' : 'Year'}</th>
+      </tr>
+    )}
+  </thead>
+  <tbody>
+    {fetchedData.map((item, index) => (
+      <tr key={index}>
+        {dataOption === 'circle' && (
+          <>
+            <td>{item.circle}</td>
+            <td>{item.division}</td>
+            <td>{item.subdivision}</td>
+          </>
+        )}
+        {dataOption === 'division' && (
+          <>
+            <td>{item.division}</td>
+            <td>{item.subdivision}</td>
+          </>
+        )}
+        {dataOption === 'subdivision' && <td>{item.subdivision}</td>}
+        <td>{item.value}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+          </div>
+
+
+
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Output;

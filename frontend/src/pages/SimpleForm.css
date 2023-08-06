@@ -1,0 +1,219 @@
+/* SimpleForm.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.submission-result {
+    margin-top: 1400px;
+  margin-left: -398px;
+  padding: 20px;
+  background-color: #fff;
+
+}
+
+.simple-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center the form vertically */
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.header{
+  color: #0056b3;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 35px;
+  margin-right: 10px;
+}
+
+input {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+/* Add spacing between form elements */
+.form-group:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 50%; /* Set the button width to 50% of the container */
+  margin-top: 16px; /* Add some spacing between the inputs and button */
+}
+.addMore{
+  padding: 12px 8px;
+  font-size: 16px;
+  background-color: #ee0c17;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 50%; /* Set the button width to 50% of the container */
+  margin-top: 16px; /* Add some spacing between the inputs and button */
+
+}
+
+.FpagecreateB{
+  padding: 4px 4px;
+  font-size: 16px;
+  background-color: #ee0c17;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100px; /* Set the button width to 50% of the container */
+  margin-top: 16px; /* Add some spacing between the inputs and button */
+}
+
+.FpageupdateB{
+    padding: 4px 4px;
+    font-size: 16px;
+    background-color: #0cee0c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100px; /* Set the button width to 50% of the container */
+    margin-top: 16px; /* Add some spacing between the inputs and button */
+  
+}
+
+.FpagedeleteB{
+  padding: 4px 4px;
+  font-size: 16px;
+  background-color: #350cee;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100px; /* Set the button width to 50% of the container */
+  margin-top: 16px; /* Add some spacing between the inputs and button */
+}
+
+.FpageviewB{
+  padding: 4px 4px;
+  font-size: 16px;
+  background-color: #dfee0c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100px; /* Set the button width to 50% of the container */
+  margin-top: 16px; /* Add some spacing between the inputs and button */
+}
+
+select {
+  appearance: none; /* Remove default arrow on some browsers */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 1024 1024'%3E%3Cpath d='M256 341.333l256 298.666 256-298.666z'%3E%3C/path%3E%3C/svg%3E"); /* Custom arrow icon */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 24px 24px;
+  padding-right: 64px; /* Space for the custom arrow icon */
+  margin-bottom: 20px;
+  
+}
+
+/* Style the dropdown options */
+select::-ms-expand {
+  display: normal; /* Remove default arrow on Microsoft browsers */
+}
+
+/* Style the dropdown options */
+select option {
+  padding: 8px;
+  color: #333;
+  background-color: #f9f9f9;
+  
+  
+}
+
+/* Hover styles for the dropdown */
+select:hover {
+  border-color: #007bff;
+}
+
+select:hover option {
+  background-color: #007bff;
+  color: #fff;
+  align-items: center;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Add some color to the form */
+.simple-form {
+  background-color: #fff;
+  border: 2px solid #007bff;
+}
+
+label {
+  color: #007bff;
+}
+
+input {
+  border: 2px solid #007bff;
+}
+
+button {
+  background-color: #007bff;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+/* SubmissionContent.css */
+
+.submission-content-container {
+position: bottom;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.submission-content {
+padding: 30px;
+max-width: 400px;
+}
